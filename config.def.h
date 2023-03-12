@@ -4,11 +4,19 @@
 const unsigned int interval = 1000;
 
 /* text to show if no value can be retrieved */
-static const char unknown_str[] = "f";
+static const char unknown_str[] = "n/a";
 
 /* maximum output string length */
 #define MAXLEN 2048
 
+static const struct arg args[] = {
+	/* function format          argument */
+	{ wifi_essid, "^b#004b72^^c#d4d4d4^ 󰤨 %s ^d^", "wlp0s20u2" },
+	{ cpu_perc, "^b#1c5e8a^^c#d4d4d4^ CPU: %s%% ^d^", NULL },
+	{ run_command, "^b#3072a3^^c#d4d4d4^ %s ^d^", "sh ~/bin/volinfo" },
+	{ ram_perc, "^b#4387bc^^c#d4d4d4^  %s%% ^d^", NULL },
+	{ datetime, "^b#569cd6^^c#f7f7f7^  %s ", "%a %d %b  %I:%M %p" },
+};
 /*
  * function            description                     argument (example)
  *
@@ -63,14 +71,3 @@ static const char unknown_str[] = "f";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
-static const struct arg args[] = {
-	/* function format          argument */
-  { wifi_essid, "^f3^^b#1d2021^^c#ebdbb2^ ﳊ %s", "wlp0s20u2"},
-	{ temp, "  %s", "/sys/class/thermal/thermal_zone0/temp"},
-	{ cpu_perc, " 󰺹 %s", NULL },
-	{ ram_perc, " 󰒋 %s", NULL},
-	{ run_command, " %s", "~/bin/volinfo"},
-	{ disk_perc, " 󱩵 %s", "/"},
-	{ datetime, "  %s", "%a %d %B  %I:%M %p"},
-	{ kernel_release, "  %s^f3^", NULL },
-};
